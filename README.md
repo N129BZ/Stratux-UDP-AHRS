@@ -1,5 +1,5 @@
 # Parse Stratux UDP port 4000 AHRS messages 
-This node app parses Stratux AHRS UDP messages on port 4000. This implementation uses the Kaitai struct compiler to generate javascript code that will decode the incoming byte array.
+This node app parses Stratux AHRS UDP messages on port 4000. This implementation uses the Kaitai struct compiler to generate javascript that will decode the incoming byte array.
 
 ###
    At run time, requires a reference to KaitaiStream, which is installed as part of the Kaitai struct compiler. The compiler generates your preferred language from the ahrs.ksy yaml file. 
