@@ -1,2 +1,2 @@
 # stratuxDgramTesting
-Parsing Stratux AHRS UDP:4000 messages using KaitaiStruct/Javascript
+This node app parses Stratux AHRS UDP messages on port 4000, using KaitaiStruct/Javascript to decode the byte array.
