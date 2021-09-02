@@ -3,8 +3,11 @@ const AhrsRecord = require('./AhrsRecord');
 const KaitaiStream = require('kaitai-struct/KaitaiStream');
 
 var PORT = 4000;
+const ADDRESS = "0.0.0.0"
+const ID_AHRS = 76;
 
 var client = dgram.createSocket('udp4');
+client.bind(PORT, ADDRESS);
 
 client.on('error', (err) => {
     console.log(err.message);
@@ -16,14 +19,11 @@ client.on('listening', () => {
 });
                                              
 client.on('message', (message, remote) => {
-    var s = "\\n";
-    if (message[1] == 76) {
+    if (message[1] == ID_AHRS) {
         var record = new AhrsRecord(new KaitaiStream(message));
         console.log(record);
     }
 });
-
-client.bind(PORT);
        
 
 //###########################################################################################################################
