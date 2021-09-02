@@ -10,4 +10,4 @@ This node app parses Stratux AHRS UDP messages on port 4000. This implementation
        ksc -t python ahrs.ksy
    ```
 ###
-   https://github.com/kaitai-io/kaitai_struct_compiler/releases
+   Requirements, see: https://github.com/kaitai-io/kaitai_struct_compiler/releases
