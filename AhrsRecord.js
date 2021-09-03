@@ -18,12 +18,15 @@ var AhrsRecord = (function() {
     this._read();
   }
   AhrsRecord.prototype._read = function() {
-    
-    this.btid     = this._io.readU1();
-    this.msgid    = this._io.readU1();
-    this.mtype    = this._io.readU1();
-    this.rsvd1    = this._io.readU1();
-    this.rsvd2    = this._io.readU1();
+    // we dont need to see the first 5 values, 
+    // but they still need to be sequentially read
+    this._io.readU1();
+    this._io.readU1();
+    this._io.readU1();
+    this._io.readU1();
+    this._io.readU1();
+
+    // assign the fields we care about
     var r         = this._io.readS2be();
     this.roll     = r != 32767 ? r / 10 : 0;
     var p         = this._io.readS2be();
@@ -35,16 +38,18 @@ var AhrsRecord = (function() {
     var y         = this._io.readS2be();
     this.yaw      = y != 32767 ? y / 10 : 0;
     var g         = this._io.readS2be();
-    this.gs       = g != 32767 ? g / 10 : 0;
+    this.gforce   = g != 32767 ? g / 10 : 0;
     var a         = this._io.readS2be();
     this.airspeed = a != 32767 ? a : 0;
     this.palt     = (this._io.readU2be()) - 5000;
     var v         = this._io.readS2be();
     this.vspeed   = v != 32767 ? v : 0;
-    this.rsvd3    = this._io.readU1();
-    this.rsvd4    = this._io.readU1();
-    this.chksum   = this._io.readU2be();
-    this.etid     = this._io.readU1();
+
+    // also ignore the last 4 values
+    this._io.readU1();
+    this._io.readU1();
+    this._io.readU2be();
+    this._io.readU1();
   }
 
   return AhrsRecord;
