@@ -22,7 +22,7 @@ seq:
     type: s2
   - id: yaw
     type: s2
-  - id: gs
+  - id: g
     type: s2
   - id: airspeed
     type: s2
