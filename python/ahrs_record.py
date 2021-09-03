@@ -1,7 +1,4 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
-
 from pkg_resources import parse_version
-import json
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
@@ -34,11 +31,11 @@ class AhrsRecord(KaitaiStruct):
         self.yaw = 0 if y == 32767 else y / 10
         gs = self._io.read_s2be()
         self.g = 0 if gs == 32767 else gs / 10
-        a = self._io.read_u2be()
+        a = self._io.read_s2be()
         self.airspeed = 0 if a == 32767 else a
-        b = self._io.read_u2be()
-        self.palt = 0 if b == 32767 else b - 5000
-        v = self._io.read_u2be()
+        pa = self._io.read_u2be()
+        self.palt = 0 if pa == 32767 else pa - 5000
+        v = self._io.read_s2be()
         self.vspeed = 0 if v == 32767 else v
         self.rsvd3 = self._io.read_u1()
         self.rsvd4 = self._io.read_u1()
