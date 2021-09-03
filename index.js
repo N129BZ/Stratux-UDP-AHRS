@@ -3,7 +3,7 @@ const AhrsRecord = require('./AhrsRecord');
 const KaitaiStream = require('kaitai-struct/KaitaiStream');
 
 var PORT = 4000;
-const ADDRESS = "0.0.0.0"
+const ADDRESS = "0.0.0.0";
 const ID_AHRS = 76;
 
 var client = dgram.createSocket('udp4');
