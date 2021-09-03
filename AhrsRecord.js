@@ -18,7 +18,7 @@ var AhrsRecord = (function() {
     this._read();
   }
   AhrsRecord.prototype._read = function() {
-    // we dont need to see the first 5 values, 
+    // we dont need to see the 5 "header" values, 
     // but they still need to be sequentially read
     this._io.readU1();
     this._io.readU1();
@@ -45,7 +45,7 @@ var AhrsRecord = (function() {
     var v         = this._io.readS2be();
     this.vspeed   = v != 32767 ? v : 0;
 
-    // also ignore the last 4 values
+    // also ignore the 4 "footer" values
     this._io.readU1();
     this._io.readU1();
     this._io.readU2be();
