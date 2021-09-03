@@ -12,5 +12,5 @@ sock.bind((udp_host,udp_port))
 while True:
     data,addr = sock.recvfrom(128)
     if data[1] == 76:
-        print(AhrsRecord(KaitaiStream(BytesIO(data))))
+        print(vars(AhrsRecord(KaitaiStream(BytesIO(data)))))
     
