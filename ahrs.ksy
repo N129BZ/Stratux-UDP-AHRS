@@ -17,19 +17,19 @@ seq:
   - id: pitch
     type: s2
   - id: heading
-    type: u2
+    type: s2
   - id: slipskid
     type: s2
   - id: yaw
     type: s2
-  - id: gs
+  - id: gforce
     type: s2
   - id: airspeed
-    type: u2
+    type: s2
   - id: palt
     type: u2
   - id: vspeed
-    type: u2   
+    type: s2   
   - id: rsvd3
     type: u1
   - id: rsvd4
