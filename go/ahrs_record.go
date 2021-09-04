@@ -8,15 +8,15 @@ type AhrsRecord struct {
 	Mtype uint8
 	Rsvd1 uint8
 	Rsvd2 uint8
-	Roll int16
-	Pitch int16
-	Heading uint16
-	Slipskid int16
-	Yaw int16
-	Gs int16
-	Airspeed uint16
+	Roll float32
+	Pitch float32
+	Heading float32
+	Slipskid float32
+	Yaw float32
+	Gs float32
+	Airspeed int16
 	Palt uint16
-	Vspeed uint16
+	Vspeed float32
 	Rsvd3 uint8
 	Rsvd4 uint8
 	Chksum uint16
@@ -49,7 +49,7 @@ func (this *AhrsRecord) Read(io *kaitai.Stream, parent interface{}, root *AhrsRe
 	if err != nil {
 		return err
 	}
-	this.Mtype = tmp3
+	this.Mtype = tmp3 
 	tmp4, err := this._io.ReadU1()
 	if err != nil {
 		return err
@@ -64,47 +64,47 @@ func (this *AhrsRecord) Read(io *kaitai.Stream, parent interface{}, root *AhrsRe
 	if err != nil {
 		return err
 	}
-	this.Roll = int16(tmp6)
+	this.Roll = float32(tmp6 / 10)
 	tmp7, err := this._io.ReadS2be()
 	if err != nil {
 		return err
 	}
-	this.Pitch = int16(tmp7)
+	this.Pitch = float32(tmp7 / 10)
 	tmp8, err := this._io.ReadU2be()
 	if err != nil {
 		return err
 	}
-	this.Heading = uint16(tmp8)
+	this.Heading = float32(tmp8 / 10)
 	tmp9, err := this._io.ReadS2be()
 	if err != nil {
 		return err
 	}
-	this.Slipskid = int16(tmp9)
+	this.Slipskid = ifloat32(tmp9 / 10)
 	tmp10, err := this._io.ReadS2be()
 	if err != nil {
 		return err
 	}
-	this.Yaw = int16(tmp10)
+	this.Yaw = float32(tmp10 / 10)
 	tmp11, err := this._io.ReadS2be()
 	if err != nil {
 		return err
 	}
-	this.Gs = int16(tmp11)
+	this.Gs = float32(tmp11 / 10)
 	tmp12, err := this._io.ReadU2be()
 	if err != nil {
 		return err
 	}
-	this.Airspeed = uint16(tmp12)
+	this.Airspeed = int16(tmp12)
 	tmp13, err := this._io.ReadU2be()
-	if err != nil {
+	if err != nil {int16
 		return err
 	}
-	this.Palt = uint16(tmp13)
+	this.Palt = uint16(tmp13 - 4999.5)
 	tmp14, err := this._io.ReadU2be()
 	if err != nil {
 		return err
 	}
-	this.Vspeed = uint16(tmp14)
+	this.Vspeed = int16(tmp14)
 	tmp15, err := this._io.ReadU1()
 	if err != nil {
 		return err
