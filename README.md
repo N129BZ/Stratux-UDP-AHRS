@@ -8,6 +8,15 @@ These apps parse Stratux AHRS UDP messages on port 4000. All implementations use
        
        ksc -t javascript ahrs.ksy
        ksc -t python ahrs.ksy
+       ksc -t csharp ahrs.ksy
+       ksc -t go ahrs.ksy
+       
+   Or specify Json output:
+   
+      ksc -t python --ksc-json-output ahrs.ksy
+      
+      etc.
+   
    ```
 ###
    Requirements, see: https://github.com/kaitai-io/kaitai_struct_compiler/releases
