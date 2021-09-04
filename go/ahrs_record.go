@@ -14,7 +14,7 @@ type AhrsRecord struct {
 	Slipskid float32
 	Yaw float32
 	Gs float32
-	Airspeed int16
+	Airspeed float32
 	Palt uint16
 	Vspeed float32
 	Rsvd3 uint8
@@ -79,7 +79,7 @@ func (this *AhrsRecord) Read(io *kaitai.Stream, parent interface{}, root *AhrsRe
 	if err != nil {
 		return err
 	}
-	this.Slipskid = ifloat32(tmp9 / 10)
+	this.Slipskid = float32(tmp9 / 10)
 	tmp10, err := this._io.ReadS2be()
 	if err != nil {
 		return err
@@ -94,7 +94,7 @@ func (this *AhrsRecord) Read(io *kaitai.Stream, parent interface{}, root *AhrsRe
 	if err != nil {
 		return err
 	}
-	this.Airspeed = int16(tmp12)
+	this.Airspeed = float32(tmp12)
 	tmp13, err := this._io.ReadU2be()
 	if err != nil {int16
 		return err
@@ -104,7 +104,7 @@ func (this *AhrsRecord) Read(io *kaitai.Stream, parent interface{}, root *AhrsRe
 	if err != nil {
 		return err
 	}
-	this.Vspeed = int16(tmp14)
+	this.Vspeed = float32(tmp14)
 	tmp15, err := this._io.ReadU1()
 	if err != nil {
 		return err
