@@ -2,7 +2,7 @@
 These apps parse Stratux AHRS UDP messages on port 4000. All implementations use the Kaitai struct compiler to generate a go, csharp, python, or javascript class (and many other languages) that will decode the incoming byte array.
 
 ###
-   At run time, requires a reference to KaitaiStream, which is installed as part of the Kaitai struct compiler. The compiler generates your preferred language from the ahrs.ksy yaml file. 
+   At run time, requires a reference to KaitaiStream, which is installed as part of the Kaitai struct compiler. The compiler generates a class object in your preferred language from the ahrs.ksy yaml file. 
    ```
    Samples: 
        
