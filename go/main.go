@@ -1,31 +1,16 @@
 package main
 
 import (
-	"bufio"
 	"bytes"
 	"encoding/json"
 	"fmt"
 	"net"
-	"os"
 
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 )
 
 func main() {
 
-	quit := make(chan bool)
-
-	go listen()
-
-	reader := bufio.NewReader(os.Stdin)
-	fmt.Print("Enter 'quit' to stop reading UDP messages:\r\n")
-	text, _ := reader.ReadString('\n')
-	if text == "quit" {
-		close(quit)
-	}
-}
-
-func listen() {
 	p := make([]byte, 512)
 	addr := net.UDPAddr{
 		Port: 4000,
